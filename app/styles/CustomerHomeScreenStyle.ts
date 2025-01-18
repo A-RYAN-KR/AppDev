@@ -6,6 +6,26 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     paddingHorizontal: 16,
   },
+  cartButton: {
+    padding: 8,
+    position: "relative",
+  },
+  cartBadge: {
+    position: "absolute",
+    top: 4,
+    right: 4,
+    backgroundColor: "#FF4500",
+    borderRadius: 10,
+    minWidth: 20,
+    height: 20,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  cartBadgeText: {
+    color: "#FFF",
+    fontSize: 12,
+    fontWeight: "bold",
+  },
   header: {
     flexDirection: "row",
     alignItems: "center",

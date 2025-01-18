@@ -18,6 +18,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { firebase_app } from "@/FirebaseConfig";
+import Toast from "react-native-toast-message"; // Import Toast
 
 type RootStackParamList = {
   Login: undefined;
@@ -48,9 +49,34 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ onSubmit, navigation }) => {
         password
       );
       const user = userCredential.user;
-      console.log("User created:", user);
+      
+
+      // Show success toast
+      Toast.show({
+        type: "success",
+        text1: "Signup Successful",
+        text2: "Your account has been created successfully.",
+      });
+
+      // Clear the input fields
+      setName("");
+      setEmail("");
+      setPassword("");
+
+      // Add a slight delay before navigating to Login screen
+      setTimeout(() => {
+        navigation.navigate("Login");
+      }, 1500); // Delay of 1500ms (2 seconds)
+
     } catch (error: any) {
-      console.error("Signup error:", error.message);
+     
+
+      // Show error toast with error message
+      Toast.show({
+        type: "error",
+        text1: "Signup Failed",
+        text2: error.message || "An unexpected error occurred.",
+      });
     }
   };
 
@@ -130,10 +156,10 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ onSubmit, navigation }) => {
           </ScrollView>
         </TouchableWithoutFeedback>
       </KeyboardAvoidingView>
+      {/* Add Toast component */}
+      <Toast />
     </LinearGradient>
   );
 };
-
-
 
 export default LoginScreen;

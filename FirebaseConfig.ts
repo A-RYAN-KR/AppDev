@@ -6,12 +6,12 @@ import { getAuth } from "firebase/auth";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyDIfDGNXJDUBmkP9T9nyCnGg5hXJ3TLHxI",
-  authDomain: "waiter-app-7c4e3.firebaseapp.com",
-  projectId: "waiter-app-7c4e3",
-  storageBucket: "waiter-app-7c4e3.firebasestorage.app",
-  messagingSenderId: "790814303926",
-  appId: "1:790814303926:web:ed243f4e2dbdf5b459a817"
+  apiKey: "AIzaSyCJczu6P0T33OeKRarsPXi-b0BdaHSrPNM",
+  authDomain: "restapp-2f030.firebaseapp.com",
+  projectId: "restapp-2f030",
+  storageBucket: "restapp-2f030.firebasestorage.app",
+  messagingSenderId: "322904990314",
+  appId: "1:322904990314:android:5bedbbb14ddbddebe32013"
 };
 
 // Initialize Firebase

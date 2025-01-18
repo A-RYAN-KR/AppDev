@@ -21,6 +21,7 @@ import {
 } from "firebase/auth";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { firebase_app } from "@/FirebaseConfig";
+import Toast from "react-native-toast-message"; // Import Toast
 
 type RootStackParamList = {
   Login: undefined;
@@ -51,10 +52,29 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ onSubmit, navigation }) => {
         password
       );
       const user = userCredential.user;
-      console.log("User logged in:", user);
-      navigation.navigate("Home");
+
+      // Show success toast
+      Toast.show({
+        type: "success",
+        text1: "Login Successful",
+        text2: "You have logged in successfully.",
+      });
+
+      // Clear the fields
+      setEmail("");
+      setPassword("");
+
+      setTimeout(() => {
+        // Navigate to Home screen
+        navigation.navigate("Home");
+      }, 600); // Delay of 600ms (1.5 seconds)
     } catch (error: any) {
-      console.error("Login error:", error.message);
+      // Show error toast with error message
+      Toast.show({
+        type: "error",
+        text1: "Login Failed",
+        text2: error.message || "An unexpected error occurred.",
+      });
     }
   };
 
@@ -130,6 +150,9 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ onSubmit, navigation }) => {
           </ScrollView>
         </TouchableWithoutFeedback>
       </KeyboardAvoidingView>
+
+      {/* Add Toast component here */}
+      <Toast />
     </LinearGradient>
   );
 };

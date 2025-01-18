@@ -10,6 +10,7 @@ import DashboardScreen from "./screens/DashboardScreeen";
 import UserSelectionScreen from "./screens/UserSelectionScreen";
 import CustomerHomeScreen from "./screens/CustomerHomeScreen";
 import CategoryScreen from "./screens/CategoryScreen";
+import CartScreen from "./screens/Cart";
 
 export type RootStackParamList = {
   User: undefined;
@@ -21,6 +22,7 @@ export type RootStackParamList = {
   Dashboard: undefined;
   CustomerHome: undefined;
   Category: undefined;
+  Cart : undefined;
 };
 
 
@@ -38,7 +40,12 @@ const Navigation: React.FC = () => {
       <Stack.Screen name="Dashboard" component={DashboardScreen} />
       <Stack.Screen name="CustomerHome" component={CustomerHomeScreen} />
       <Stack.Screen name="Category" component={CategoryScreen} />
+      <Stack.Screen name="Cart" component={CartScreen} />
+
+      
     </Stack.Navigator>
+
+    
   );
 };
 

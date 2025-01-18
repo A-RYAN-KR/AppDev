@@ -10,6 +10,8 @@ import {
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import styles from "../styles/CategoryScreenStyle";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { RootStackParamList } from "../Navigation"; // Update the path to your Navigation file
 
 interface DessertItem {
   id: string;
@@ -22,7 +24,16 @@ interface DessertItem {
   isFavorite?: boolean;
 }
 
-const CategoryScreen: React.FC = () => {
+type CategoryScreenNavigationProp = NativeStackNavigationProp<
+  RootStackParamList,
+  "Category"
+>;
+
+interface CategoryScreenProps {
+  navigation: CategoryScreenNavigationProp;
+}
+
+const CategoryScreen: React.FC<CategoryScreenProps> = ({ navigation }) => {
   const desserts: DessertItem[] = [
     {
       id: "1",
@@ -68,14 +79,20 @@ const CategoryScreen: React.FC = () => {
 
       {/* Header */}
       <View style={styles.header}>
-        <TouchableOpacity style={styles.backButton}>
+        <TouchableOpacity
+          style={styles.backButton}
+          onPress={() => navigation.goBack()}
+        >
           <Ionicons name="chevron-back" size={24} color="#000" />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>Dessert</Text>
         <TouchableOpacity style={styles.searchButton}>
           <Ionicons name="search" size={24} color="#000" />
         </TouchableOpacity>
-        <TouchableOpacity style={styles.cartButton}>
+        <TouchableOpacity
+          style={styles.cartButton}
+          onPress={() => navigation.navigate("Cart")} // Navigate to the Cart page
+        >
           <Ionicons name="cart-outline" size={24} color="#000" />
           <View style={styles.cartBadge}>
             <Text style={styles.cartBadgeText}>1</Text>

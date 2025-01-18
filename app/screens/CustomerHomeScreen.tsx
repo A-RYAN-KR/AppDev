@@ -144,13 +144,6 @@ const CustomerHomeScreen: React.FC<CustomerHomeScreenProps> = ({
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
         <TouchableOpacity>
-          <Ionicons name="menu-outline" size={24} color="black" />
-        </TouchableOpacity>
-        <View style={styles.locationContainer}>
-          <Ionicons name="location-outline" size={20} color="black" />
-          <Text style={styles.locationText}>Ashish, Jammu</Text>
-          <Ionicons name="chevron-down-outline" size={20} color="black" />
-        </View>
         <TouchableOpacity style={styles.profileButton}>
           <Image
             source={{
@@ -159,6 +152,22 @@ const CustomerHomeScreen: React.FC<CustomerHomeScreenProps> = ({
             style={styles.profileImage}
           />
         </TouchableOpacity>
+          
+        </TouchableOpacity>
+        <View style={styles.locationContainer}>
+          <Ionicons name="location-outline" size={20} color="black" />
+          <Text style={styles.locationText}>Ashish, Jammu</Text>
+          <Ionicons name="chevron-down-outline" size={20} color="black" />
+        </View>
+
+        <TouchableOpacity style={styles.cartButton} onPress={() => navigation.navigate("Cart")}>
+         
+          <Ionicons name="cart-outline" size={24} color="#000" />
+          <View style={styles.cartBadge}>
+            <Text style={styles.cartBadgeText}>1</Text>
+          </View>
+        </TouchableOpacity>
+        
       </View>
 
       <Text style={styles.greeting}>Good Morning,</Text>
